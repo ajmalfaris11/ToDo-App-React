@@ -1,6 +1,7 @@
 import React from 'react'
 import "./App.css"
 import TaskForm from './assets/components/TaskForm'
+import TaskColumn from './assets/components/TaskColumn'
 
 
 const App = () => {
@@ -9,9 +10,9 @@ const App = () => {
     <div className='app'>
       <TaskForm/>
       <main className='app_main'>
-        <section className="task_column">Section 1</section>
-        <section className="task_column">Section 2</section>
-        <section className="task_column">Section 3</section>
+        <TaskColumn sectionName = "🎯 To do"  />
+        <TaskColumn sectionName = "🌟 Doing"  />
+        <TaskColumn sectionName = "☑️ Done"  />
       </main>
     </div>
   )
