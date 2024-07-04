@@ -6,7 +6,8 @@
 .app_main {
   display: flex;
   justify-content: space-evenly;
-  padding: 20px 8%;
-  gap: 20px;
+  padding: 20px 4%;
+  background-color: #fff;
 } 
+
 

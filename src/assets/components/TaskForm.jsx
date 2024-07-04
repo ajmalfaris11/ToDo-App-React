@@ -9,7 +9,7 @@ const TaskForm = () => {
         <input
           type="text"
           className="task_input"
-          placeholder="Enter Your Task"
+          placeholder="Enter Your Task..."
         />
 
         <div className="task_form_buttom_line">
