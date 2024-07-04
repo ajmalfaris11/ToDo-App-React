@@ -12,7 +12,7 @@ const App = () => {
       <main className='app_main'>
         <TaskColumn sectionName = "🎯 To do"  />
         <TaskColumn sectionName = "🌟 Doing"  />
-        <TaskColumn sectionName = "☑️ Done"  />
+        <TaskColumn sectionName = "✔️ Done"  />
       </main>
     </div>
   )
