@@ -3,27 +3,49 @@ import "./TaskForm.css";
 import Tag from "./Tag";
 
 const TaskForm = () => {
+
+  // create state variable for take value from inputs
+  // this use state will work on task input and status input
+  const [taskData, setTaskData] = useState({
+    task:"",
+    status:"todo",
+    
+  })
+
+ const handleTaskChange = (e) => {
+  const { name, value } = e.target;
+  setTaskData((prev) => {
+    return { ...prev, [name]: value };
+  });
+};
+
+  const handleSubmit = (e) => {
+    e.preventDefault(); //stop the reloading while submit the form
+    console.log(taskData)
+  };
+
   // create state variable
-  const [task, setTask] = useState("");
-  const [status, setStatus] = useState("todo");
+  // const [task, setTask] = useState("");
+  // const [status, setStatus] = useState("todo");
 
   // function for take the task input 
-  const handleTaskChange = e => {
-    setTask(e.target.value);
-  }
+  // const handleTaskChange = e => {
+  //   setTask(e.target.value);
+  // }
 
-    // function for take the status input 
-  const handleStatusChange = e => {
-    setStatus(e.target.value);
-  }
+  //   function for take the status input 
+  // const handleStatusChange = e => {
+  //   setStatus(e.target.value);
+  // }
 
-  console.log(task, status )
+  // console.log(task, status )
 
   return (
     <header className="app_header">
-      <form action="">
+      <form onSubmit={handleSubmit}>
         <input
           type="text"
+          name="task"
           className="task_input"
           placeholder="Enter Your Task..."
           onChange={ handleTaskChange }
@@ -39,8 +61,9 @@ const TaskForm = () => {
           </div>
 
           <div>
-            <select name="" id="" className="task_status"
-            onChange={handleStatusChange}>
+            <select name="status" id="" className="task_status"
+            onChange={handleTaskChange}
+            >
               <option value="todo">To do</option>
               <option value="doing">Doing</option>
               <option value="done">Done</option>
