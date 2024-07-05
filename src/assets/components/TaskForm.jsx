@@ -5,12 +5,28 @@ import Tag from "./Tag";
 const TaskForm = () => {
 
   // create state variable for take value from inputs
-  // this use state will work on task input and status input
+  // this use state will work on task input, status and tag input
   const [taskData, setTaskData] = useState({
     task:"",
     status:"todo",
-    
+    tags:[]
   })
+
+  // task function
+  const selectTag = (tag) => {
+    if(taskData.tags.some(item => item === tag)) {
+      const filterTags = taskData.tags.filter(item => item !== tag)
+      setTaskData(prev => {
+         return {...prev, tags: filterTags}
+      })
+    } else {
+      setTaskData (prev => {
+        return {...prev, tags: [...prev.tags, tag]}
+      })
+    }
+  }
+
+  console.log(taskData.tags)
 
  const handleTaskChange = (e) => {
   const { name, value } = e.target;
@@ -24,21 +40,6 @@ const TaskForm = () => {
     console.log(taskData)
   };
 
-  // create state variable
-  // const [task, setTask] = useState("");
-  // const [status, setStatus] = useState("todo");
-
-  // function for take the task input 
-  // const handleTaskChange = e => {
-  //   setTask(e.target.value);
-  // }
-
-  //   function for take the status input 
-  // const handleStatusChange = e => {
-  //   setStatus(e.target.value);
-  // }
-
-  // console.log(task, status )
 
   return (
     <header className="app_header">
@@ -54,10 +55,10 @@ const TaskForm = () => {
         <div className="task_form_buttom_line">
 
           <div className="tags"> 
-            <Tag tagName = "HTML" />
-            <Tag tagName = "CSS" />
-            <Tag tagName = "JavaScript" />
-            <Tag tagName = "React" />
+            <Tag tagName = "HTML" selectTag = {selectTag} />
+            <Tag tagName = "CSS" selectTag = {selectTag}  />
+            <Tag tagName = "JavaScript" selectTag = {selectTag}  />
+            <Tag tagName = "React" selectTag = {selectTag}  />
           </div>
 
           <div>
