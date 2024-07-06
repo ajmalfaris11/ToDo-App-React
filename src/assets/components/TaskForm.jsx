@@ -3,43 +3,45 @@ import "./TaskForm.css";
 import Tag from "./Tag";
 
 const TaskForm = () => {
-
   // create state variable for take value from inputs
   // this use state will work on task input, status and tag input
   const [taskData, setTaskData] = useState({
-    task:"",
-    status:"todo",
-    tags:[]
-  })
+    task: "",
+    status: "todo",
+    tags: [],
+  });
+
+  const checkTag = (tag) => {
+    return taskData.tags.some((item) => item === tag);
+  };
 
   // task function
   const selectTag = (tag) => {
-    if(taskData.tags.some(item => item === tag)) {
-      const filterTags = taskData.tags.filter(item => item !== tag)
-      setTaskData(prev => {
-         return {...prev, tags: filterTags}
-      })
+    if (taskData.tags.some((item) => item === tag)) {
+      const filterTags = taskData.tags.filter((item) => item !== tag);
+      setTaskData((prev) => {
+        return { ...prev, tags: filterTags };
+      });
     } else {
-      setTaskData (prev => {
-        return {...prev, tags: [...prev.tags, tag]}
-      })
+      setTaskData((prev) => {
+        return { ...prev, tags: [...prev.tags, tag] };
+      });
     }
-  }
+  };
 
-  console.log(taskData.tags)
+  console.log(taskData.tags);
 
- const handleTaskChange = (e) => {
-  const { name, value } = e.target;
-  setTaskData((prev) => {
-    return { ...prev, [name]: value };
-  });
-};
+  const handleTaskChange = (e) => {
+    const { name, value } = e.target;
+    setTaskData((prev) => {
+      return { ...prev, [name]: value };
+    });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault(); //stop the reloading while submit the form
-    console.log(taskData)
+    console.log(taskData);
   };
-
 
   return (
     <header className="app_header">
@@ -49,21 +51,39 @@ const TaskForm = () => {
           name="task"
           className="task_input"
           placeholder="Enter Your Task..."
-          onChange={ handleTaskChange }
+          onChange={handleTaskChange}
         />
 
         <div className="task_form_buttom_line">
-
-          <div className="tags"> 
-            <Tag tagName = "HTML" selectTag = {selectTag} />
-            <Tag tagName = "CSS" selectTag = {selectTag}  />
-            <Tag tagName = "JavaScript" selectTag = {selectTag}  />
-            <Tag tagName = "React" selectTag = {selectTag}  />
+          <div className="tags">
+            <Tag
+              tagName="HTML"
+              selectTag={selectTag}
+              selected={checkTag("HTML")}
+            />
+            <Tag
+              tagName="CSS"
+              selectTag={selectTag}
+              selected={checkTag("CSS")}
+            />
+            <Tag
+              tagName="JavaScript"
+              selectTag={selectTag}
+              selected={checkTag("JavaScript")}
+            />
+            <Tag
+              tagName="React"
+              selectTag={selectTag}
+              selected={checkTag("React")}
+            />
           </div>
 
           <div>
-            <select name="status" id="" className="task_status"
-            onChange={handleTaskChange}
+            <select
+              name="status"
+              id=""
+              className="task_status"
+              onChange={handleTaskChange}
             >
               <option value="todo">To do</option>
               <option value="doing">Doing</option>
