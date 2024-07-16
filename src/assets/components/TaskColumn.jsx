@@ -2,14 +2,14 @@ import React from "react";
 import "./TaskColumn.css";
 import TaskCard from "./TaskCard";
 
-const TaskColumn = (section) => { //props function
+const TaskColumn = ({sectionName,tasks, status}) => { //props function
   return (
     <section className="task_column">
-      <h2>{section.sectionName}</h2>
+      <h2>{sectionName}</h2>
       <div className="tasks_section">
-        <TaskCard />
-        <TaskCard />
-        <TaskCard />
+        {
+          tasks.map((task, index) => task.status === status && <TaskCard key={index} title={task.task} tags={task.tags}  />)
+        }
       </div>
       
     </section>

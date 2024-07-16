@@ -15,9 +15,9 @@ const App = () => {
     <div className='app'>
       <TaskForm setTasks = {setTasks}/>
       <main className='app_main'>
-        <TaskColumn sectionName = "🎯 To do"  />
-        <TaskColumn sectionName = "🌟 Doing"  />
-        <TaskColumn sectionName = "✔️ Done"  />
+        <TaskColumn sectionName = "🎯 To do" tasks={tasks} status="todo" />
+        <TaskColumn sectionName = "🌟 Doing" tasks={tasks} status="doing"/>
+        <TaskColumn sectionName = "✔️ Done"  tasks={tasks} status="done"/>
       </main>
     </div>
   )
