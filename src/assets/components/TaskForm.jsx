@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./TaskForm.css";
 import Tag from "./Tag";
 
-const TaskForm = () => {
+const TaskForm = ({setTasks}) => {
   // create state variable for take value from inputs
   // this use state will work on task input, status and tag input
   const [taskData, setTaskData] = useState({
@@ -29,8 +29,6 @@ const TaskForm = () => {
     }
   };
 
-  console.log(taskData.tags);
-
   const handleTaskChange = (e) => {
     const { name, value } = e.target;
     setTaskData((prev) => {
@@ -41,6 +39,9 @@ const TaskForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault(); //stop the reloading while submit the form
     console.log(taskData);
+    setTasks ((prev) => {
+      return [...prev, taskData];
+    })
   };
 
   return (
