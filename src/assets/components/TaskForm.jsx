@@ -42,10 +42,10 @@ const TaskForm = ({setTasks}) => {
     setTasks ((prev) => {
       return [...prev, taskData];
     })
-    // reset tags after add task
+    // reset input feeld, tags and status after submit the task
     setTaskData({
       task: "",
-      status: "todo",
+      status: "doing",
       tags: [],
     })
   };
@@ -56,6 +56,7 @@ const TaskForm = ({setTasks}) => {
         <input
           type="text"
           name="task"
+          value={taskData.task}
           className="task_input"
           placeholder="Enter Your Task..."
           onChange={handleTaskChange}
@@ -88,7 +89,7 @@ const TaskForm = ({setTasks}) => {
           <div>
             <select
               name="status"
-              id=""
+              value={taskData.status}
               className="task_status"
               onChange={handleTaskChange}
             >
