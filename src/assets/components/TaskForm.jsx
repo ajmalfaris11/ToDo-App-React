@@ -42,6 +42,12 @@ const TaskForm = ({setTasks}) => {
     setTasks ((prev) => {
       return [...prev, taskData];
     })
+    // reset tags after add task
+    setTaskData({
+      task: "",
+      status: "todo",
+      tags: [],
+    })
   };
 
   return (
