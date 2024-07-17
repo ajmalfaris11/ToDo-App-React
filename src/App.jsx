@@ -4,11 +4,13 @@ import "./App.css";
 import TaskForm from "./assets/components/TaskForm";
 import TaskColumn from "./assets/components/TaskColumn";
 
+// store datas to recover after reloading the website
 const oldTasks = localStorage.getItem("tasks")
 console.log(oldTasks);
-
+ 
+// store datas to local storage and restore old datas from local storage
 const App = () => {
-  const [tasks, setTasks] = useState(JSON.parse(oldTasks));
+  const [tasks, setTasks] = useState(JSON.parse(oldTasks) || []);
 
   useEffect(()=> {localStorage.setItem("tasks", JSON.stringify(tasks))}, [tasks])
 

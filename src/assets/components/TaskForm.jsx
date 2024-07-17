@@ -45,7 +45,7 @@ const TaskForm = ({setTasks}) => {
     // reset input feeld, tags and status after submit the task
     setTaskData({
       task: "",
-      status: "doing",
+      status: "todo",
       tags: [],
     })
   };
