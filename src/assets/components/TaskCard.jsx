@@ -3,7 +3,7 @@ import "./TaskCard.css";
 import Tag from "./Tag";
 
 
-const TaskCard = ({title, tags}) => {
+const TaskCard = ({title, tags, handleDelete, index}) => {
   return (
 
       <article className="task_card">
@@ -15,7 +15,8 @@ const TaskCard = ({title, tags}) => {
             tags.map((tag, index) => <Tag key={index} tagName={tag} selected = {true} />)
             }
           </div>
-          <div className="task_delete">
+          <div className="task_delete" 
+          onClick={ () => handleDelete(index)}>
             <span class="material-symbols-outlined">delete</span>
           </div>
         </div>
