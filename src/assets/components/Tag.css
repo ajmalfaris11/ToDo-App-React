@@ -1,18 +1,35 @@
 .tag {
-    font-size: 14px;
-    font-weight: 500;
-    background-color: #fff;
-    border: none;
-    color: #6457f9;
-    border-radius: 5px;
-    padding: 6px 12px;
-    margin-right: 10px;
-    cursor: pointer;
-    font-weight: 500;
-    transition: all 0.5s ease-in-out;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1.5px solid;
+  border-radius: 20px;
+  padding: 6px 14px;
+  cursor: pointer;
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  font-family: inherit;
+  line-height: 1;
 }
 
 .tag:hover {
-    color: white;
-    background-color: #6457f9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.tag:active {
+  transform: translateY(0) scale(0.95);
+}
+
+.tag_selected {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .tag {
+    font-size: 11px;
+    padding: 5px 12px;
+  }
 }
