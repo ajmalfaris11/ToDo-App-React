@@ -1,13 +1,32 @@
 .app {
-  display: grid;
-  grid-template-rows: 150px auto;
+  min-height: 100vh;
+  background: white;
+  padding-bottom: 40px;
 }
 
 .app_main {
-  display: flex;
-  justify-content: space-evenly;
-  padding: 20px 4%;
-  background-color: #fff;
-} 
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  padding: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+  margin-top: -60px;
+  position: relative;
+  z-index: 1;
+}
 
+@media (max-width: 768px) {
+  .app_main {
+    grid-template-columns: 1fr;
+    padding: 16px;
+    margin-top: -40px;
+    gap: 16px;
+  }
+}
 
+@media (min-width: 1200px) {
+  .app_main {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
